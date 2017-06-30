@@ -269,7 +269,9 @@ if(NOT MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
 
-if(UNIX)
+if(_gRPC_PLATFORM_MAC)
+  set(_gRPC_ALLTARGETS_LIBRARIES dl m pthread)
+elseif(UNIX)
   set(_gRPC_ALLTARGETS_LIBRARIES dl rt m pthread)
 endif()
 
